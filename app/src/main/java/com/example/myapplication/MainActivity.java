@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-
+Context context = MainActivity.this;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -27,15 +28,16 @@ public class MainActivity extends AppCompatActivity {
             RecyclerView recyclerView = findViewById(R.id.RecyclerView);
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
             recyclerView.setLayoutManager(layoutManager);
-            RecyclerView.Adapter adapter = new BookAdapter(getMyList());
+            RecyclerView.Adapter adapter = new BookAdapter(getMyList(), context);
             recyclerView.setAdapter(adapter);
         }
 
 
         public ArrayList<String> getMyList() {
             ArrayList<String> a = new ArrayList<>();
-            for (int i = 0; i < 50; i++) {
-                a.add("Hello!");
+            for (int i = 1; i <= 20; i++) {
+                a.add("Привет, номер " + i + "!");
+
             }
 
             return a;
